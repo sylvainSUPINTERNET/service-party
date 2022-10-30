@@ -3,3 +3,8 @@ ws:
 
 server:
   port: 4999
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://<user>:<password>@<ip>?retryWrites=true&w=majority
