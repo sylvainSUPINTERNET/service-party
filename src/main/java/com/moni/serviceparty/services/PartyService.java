@@ -23,4 +23,10 @@ public class PartyService implements IPartyService {
     }
 
 
+    @Override
+    public Flux<Party> addPartyFromAdmin() {
+        return null;
+    }
+
+
 }

@@ -9,7 +9,6 @@ public class Party {
     
     @Id
     private String id;
-    private String owner;
     private String itemToWinId;
     private double entryPrice;
     private int maxParticipants;
@@ -23,14 +22,6 @@ public class Party {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getOwner() {
-        return this.owner;
-    }
-
-    public void setOwner(String owner) {
-        this.owner = owner;
     }
 
     public String getItemToWinId() {

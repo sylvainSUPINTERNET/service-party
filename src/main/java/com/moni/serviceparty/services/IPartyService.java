@@ -9,4 +9,5 @@ import reactor.core.publisher.Flux;
 @Service
 public interface IPartyService {
     public Flux<Party> getAllParties();
+    public Flux<Party> addPartyFromAdmin();
 }
