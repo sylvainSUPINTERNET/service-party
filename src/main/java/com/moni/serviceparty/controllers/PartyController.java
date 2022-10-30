@@ -28,4 +28,9 @@ public class PartyController {
             .map(ResponseEntity::ok);
     }
 
+
+    // TODO 
+    // Add party ( admin only )
+    
+
 }

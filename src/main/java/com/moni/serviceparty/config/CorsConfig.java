@@ -1,34 +1,26 @@
 package com.moni.serviceparty.config;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import org.springframework.web.cors.reactive.CorsConfigurationSource;
-import org.springframework.web.cors.reactive.CorsWebFilter;
+import org.springframework.web.reactive.config.CorsRegistry;
+import org.springframework.web.reactive.config.EnableWebFlux;
+import org.springframework.web.reactive.config.WebFluxConfigurer;
+
 
 @Configuration
-public class CorsConfig {
-    // TODO 
+@EnableWebFlux
+public class CorsConfig implements WebFluxConfigurer {
+    
+    @Value("${cors.allowedOrigin}")
+    private String allowedOrigin;
 
     
-    // @Value("${cors.allowedOrigin}")
-    // private String allowedOrigin;
-
-    // @Bean
-    // CorsWebFilter corsFilter() {
-
-    //     CorsConfiguration config = new CorsConfiguration();
-
-    //     config.setAllowCredentials(true);
-    //     config.addAllowedOrigin(allowedOrigin);
-    //     config.addAllowedHeader("*");
-    //     config.addAllowedMethod("*");
-
-    //     UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-    //     source.registerCorsConfiguration("/**", config);
-
-    //     return new CorsWebFilter((CorsConfigurationSource) source);
-    // }
+    @Override
+    public void addCorsMappings(CorsRegistry corsRegistry) {
+        corsRegistry.addMapping("/**")
+        .allowedOrigins(allowedOrigin)
+        .allowedMethods("*")
+        .allowedHeaders("*")
+        .allowCredentials(true);
+    }
 }
