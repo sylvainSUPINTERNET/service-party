@@ -1,2 +1,5 @@
 ws:
     allowedOrigin: "http://localhost:5173"
+
+server:
+  port: 4999
