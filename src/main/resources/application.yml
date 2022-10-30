@@ -1,10 +1,12 @@
 ws:
     allowedOrigin: "http://localhost:5173"
-
+cors:
+    allowedOrigin: "http://localhost:5173"
 server:
   port: 4999
 
 spring:
   data:
     mongodb:
-      uri: mongodb+srv://<user>:<password>@<ip>?retryWrites=true&w=majority
+      uri: mongodb+srv://<user>:<password>@cluster0.vhh4x.mongodb.net/service-party?retryWrites=true&w=majority
+

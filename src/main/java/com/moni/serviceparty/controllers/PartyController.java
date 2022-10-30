@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.moni.serviceparty.dto.PartyCreateDto;
 import com.moni.serviceparty.services.IPartyService;
 
 import reactor.core.publisher.Flux;
@@ -32,8 +33,10 @@ public class PartyController {
     }
 
     @PostMapping
-    public Flux<ResponseEntity<?>> addPartyFromAdmin(@RequestBody Flux<?> party) {
-        return this.partyService.addPartyFromAdmin();
+    public Mono<ResponseEntity<?>> addPartyFromAdmin(@RequestBody PartyCreateDto party) {
+        return this.partyService
+            .addPartyFromAdmin(party)
+            .map( e -> e != null ? ResponseEntity.ok(e) : ResponseEntity.badRequest().build());
     }
 
 
