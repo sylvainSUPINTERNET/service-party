@@ -1,5 +1,7 @@
 package com.moni.serviceparty.services;
 
+import java.time.format.DateTimeFormatter;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -34,7 +36,7 @@ public class PartyService implements IPartyService {
         try {
             Party party = new Party();
             party.setCurrentParticipants(0);
-            party.setEndDate(partyCreateDto.getEndDate());
+            party.setEndDate(partyCreateDto.getEndDate()); // DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(partyCreateDto.getEndDate());
             party.setStartDate(partyCreateDto.getStartDate());
             party.setEntryPrice(partyCreateDto.getEntryPrice());
             party.setItemToWinId(partyCreateDto.getItemToWinId());

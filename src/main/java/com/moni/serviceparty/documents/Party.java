@@ -1,20 +1,39 @@
 package com.moni.serviceparty.documents;
 
-import java.sql.Date;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.util.Date;
+
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.annotation.Version;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "party")
 public class Party {
     
+    @Version private Long version;
+
     @Id
     private String id;
     private String itemToWinId;
     private double entryPrice;
     private int maxParticipants;
     private int currentParticipants;
-    private Date startDate;
-    private Date endDate;
+    private LocalDateTime startDate;
+    private LocalDateTime endDate;
+
+    @CreatedDate
+    private Date createdDate;
+
+    public Date getCreatedDate() {
+        return this.createdDate;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
 
     public String getId() {
         return this.id;
@@ -56,19 +75,19 @@ public class Party {
         this.currentParticipants = currentParticipants;
     }
 
-    public Date getStartDate() {
+    public LocalDateTime getStartDate() {
         return this.startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(LocalDateTime startDate) {
         this.startDate = startDate;
     }
 
-    public Date getEndDate() {
+    public LocalDateTime getEndDate() {
         return this.endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(LocalDateTime endDate) {
         this.endDate = endDate;
     }
 
