@@ -1,6 +1,6 @@
 package com.moni.serviceparty.documents;
 
-import java.time.Instant;
+
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -9,6 +9,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.annotation.Version;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Document(collection = "party")
 public class Party {
@@ -21,11 +23,28 @@ public class Party {
     private double entryPrice;
     private int maxParticipants;
     private int currentParticipants;
+    
+    @JsonFormat(
+    shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm:ss", locale = "fr_FR")
     private LocalDateTime startDate;
+    @JsonFormat(
+    shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm:ss", locale = "fr_FR")
     private LocalDateTime endDate;
 
-    @CreatedDate
+    // Do not forget to add to main class the annotation @EnableMongoAuditing or/and @EnableReactiveMongoAuditing
+	@CreatedDate
     private Date createdDate;
+
+    @LastModifiedDate
+    private Date lastModifiedDate;
+
+    public Date getLastModifiedDate() {
+        return this.lastModifiedDate;
+    }
+
+    public void setLastModifiedDate(Date lastModifiedDate) {
+        this.lastModifiedDate = lastModifiedDate;
+    }
 
     public Date getCreatedDate() {
         return this.createdDate;
