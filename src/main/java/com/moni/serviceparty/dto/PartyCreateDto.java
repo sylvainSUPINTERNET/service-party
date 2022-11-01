@@ -10,6 +10,15 @@ public class PartyCreateDto {
     private int currentParticipants;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
+    private boolean status;
+
+    public boolean isStatus() {
+        return this.status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
 
     public String getItemToWinId() {
         return itemToWinId;

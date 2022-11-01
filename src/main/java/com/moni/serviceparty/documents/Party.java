@@ -23,7 +23,7 @@ public class Party {
     private double entryPrice;
     private int maxParticipants;
     private int currentParticipants;
-    
+    private boolean status;
     @JsonFormat(
     shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm:ss", locale = "fr_FR")
     private LocalDateTime startDate;
@@ -37,6 +37,15 @@ public class Party {
 
     @LastModifiedDate
     private Date lastModifiedDate;
+
+    
+    public boolean isStatus() {
+        return this.status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
 
     public Date getLastModifiedDate() {
         return this.lastModifiedDate;
