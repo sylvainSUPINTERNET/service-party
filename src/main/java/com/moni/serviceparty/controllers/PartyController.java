@@ -29,6 +29,8 @@ public class PartyController {
             .map(ResponseEntity::ok);
     }
 
+
+    // TODO : admin only
     @PostMapping
     public Mono<ResponseEntity<?>> addPartyFromAdmin(@RequestBody PartyCreateDto party) {
         return this.partyService
@@ -40,6 +42,7 @@ public class PartyController {
     // TODO 
     // Add party ( admin only )
     // -> event scheduler ( mongoDB )
+    
     // When party is over => send event to rabbitmq ( to notify service history ) will send to WS
     // Join party ( user )
     // -> check if user has enough money ? ( require payment service )
